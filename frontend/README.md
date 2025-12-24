@@ -195,14 +195,19 @@ NEXT_PUBLIC_ENV=development
 
 ## Deployment
 
-### Vercel (Recommended)
+### Netlify (Recommended)
+
+The project includes a `netlify.toml` configuration file in the root directory.
 
 ```bash
-# Install Vercel CLI
-npm i -g vercel
+# Deploy via Netlify dashboard
+# 1. Connect your GitHub repository
+# 2. Netlify will auto-detect settings from netlify.toml
+# 3. Deploy!
 
-# Deploy
-vercel
+# Or use Netlify CLI
+npm i -g netlify-cli
+netlify deploy --prod
 ```
 
 ### Docker

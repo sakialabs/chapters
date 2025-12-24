@@ -16,10 +16,20 @@ A calm, expressive, AI-assisted social platform built for depth, not dopamine.
 - [Documentation](#-documentation)
 - [Deployment](#-deployment)
 - [What Makes Chapters Different](#-what-makes-chapters-different)
+- [Screenshots](#️-screenshots)
 - [Contributing](#-contributing)
 - [License](#-license)
 
 ---
+
+## 🎯 Current Status
+
+**Backend**: ✅ Complete (70+ tests passing)  
+**Mobile App**: ✅ Complete (React Native + Expo)  
+**Web App**: ✅ Complete (Next.js 14)  
+**Deployment**: 🚧 Ready for production setup
+
+All core features implemented and tested. Ready for deployment to Render (backend), Netlify (web), and Expo EAS (mobile).
 
 ## 🚀 Quick Start
 
@@ -66,15 +76,6 @@ npm start
 - Web App: http://localhost:3000
 
 For detailed setup, see [docs/setup.md](docs/setup.md)
-
-## 🎯 Current Status
-
-**Backend**: ✅ Complete (70+ tests passing)  
-**Mobile App**: ✅ Complete (React Native + Expo)  
-**Web App**: ✅ Complete (Next.js 14)  
-**Deployment**: 🚧 Ready for production setup
-
-All core features implemented and tested. Ready for deployment to Render (backend), Vercel (web), and Expo EAS (mobile).
 
 ---
 
@@ -143,7 +144,7 @@ chapters/
 - **Framework**: Next.js 14 (App Router)
 - **Styling**: Tailwind CSS + shadcn/ui
 - **Animations**: Framer Motion
-- **Deployment**: Vercel-ready
+- **Deployment**: Netlify
 
 ## 🎨 Design Philosophy
 
@@ -306,10 +307,11 @@ See [docs/README.md](docs/README.md) for a guide to all documentation.
 # PostgreSQL and Redis managed services
 ```
 
-### Web (Vercel)
+### Web (Netlify)
 ```bash
 cd frontend
-vercel deploy --prod
+npm run build
+# Deploy via Netlify dashboard or CLI
 ```
 
 ### Mobile (Expo EAS)
@@ -331,6 +333,56 @@ See [docs/deployment.md](docs/deployment.md) for detailed instructions.
 ✅ **No pure white/black** - Warm, paper-like colors  
 ✅ **No auto-publish AI** - Muse suggests, you decide  
 ✅ **No cold outreach** - Between the Lines requires mutual trust  
+
+## 🖼️ Screenshots
+
+<details>
+<summary><b>Landing & About</b></summary>
+
+![Landing Page](docs/screenshots/web-landing-top.png)
+![Landing Bottom](docs/screenshots/web-landing-bottom.png)
+![About Page](docs/screenshots/web-about.png)
+![Manifesto](docs/screenshots/web-manifesto.png)
+
+</details>
+
+<details>
+<summary><b>Library Views</b></summary>
+
+![Bookshelf](docs/screenshots/web-library-bookshelf.png)
+![New Chapters](docs/screenshots/web-library-chapters-1.png)
+![Chapter Feed](docs/screenshots/web-library-chapters-2.png)
+![Quiet Picks](docs/screenshots/web-library-picks.png)
+
+</details>
+
+<details>
+<summary><b>Study Workspace</b></summary>
+
+![Drafts](docs/screenshots/web-study-drafts.png)
+![Notes](docs/screenshots/web-study-notes.png)
+
+</details>
+
+<details>
+<summary><b>Muse AI Onboarding</b></summary>
+
+![Muse Step 1](docs/screenshots/web-muse-onboarding-1.png)
+![Muse Step 2](docs/screenshots/web-muse-onboarding-2.png)
+![Muse Step 3](docs/screenshots/web-muse-onboarding-3.png)
+![Muse Step 4](docs/screenshots/web-muse-onboarding-4.png)
+![Muse Step 5](docs/screenshots/web-muse-onboarding-5.png)
+
+</details>
+
+<details>
+<summary><b>Preferences</b></summary>
+
+![Book Settings](docs/screenshots/web-preferences-book.png)
+![Bindings](docs/screenshots/web-preferences-bindings.png)
+![Muse Settings](docs/screenshots/web-preferences-muse.png)
+
+</details>
 
 ## 🤝 Contributing
 

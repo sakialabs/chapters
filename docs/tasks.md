@@ -897,8 +897,9 @@ The implementation uses:
     - Set up public and private access policies
     - _Requirements: 24.4_
 
-  - [ ] 39.3 Deploy web app to Vercel
-    - Connect Next.js project to Vercel
+  - [ ] 39.3 Deploy web app to Netlify
+    - Connect Next.js project to Netlify
+    - Configure build settings (uses netlify.toml)
     - Configure environment variables
     - Set up custom domain (if applicable)
     - _Requirements: 24.2_

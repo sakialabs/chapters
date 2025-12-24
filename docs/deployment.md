@@ -404,6 +404,99 @@ Once deployed, API docs are available at:
 - Swagger UI: `https://your-domain.com/docs`
 - ReDoc: `https://your-domain.com/redoc`
 
+## Frontend Deployment (Netlify)
+
+### Quick Deploy
+
+1. **Connect Repository**
+   - Go to Netlify dashboard
+   - Click "Add new site" → "Import an existing project"
+   - Connect GitHub and select repository
+
+2. **Configure Build**
+   ```
+   Base directory: frontend
+   Build command: npm run build
+   Publish directory: frontend/.next
+   ```
+
+3. **Environment Variables**
+   ```bash
+   NEXT_PUBLIC_API_URL=https://your-backend-api.com
+   ```
+
+4. **Deploy**
+   - Netlify auto-deploys on git push to main
+   - Custom domain: Site settings → Domain management
+
+### netlify.toml
+
+Already configured in project root:
+```toml
+[build]
+  base = "frontend"
+  command = "npm run build"
+  publish = ".next"
+```
+
+## Mobile Deployment (Expo EAS)
+
+### Prerequisites
+
+```bash
+npm install -g eas-cli
+eas login
+```
+
+### 1. Configure Project
+
+```bash
+cd mobile
+eas build:configure
+```
+
+### 2. Set Environment Variables
+
+Create `eas.json`:
+```json
+{
+  "build": {
+    "production": {
+      "env": {
+        "API_URL": "https://your-backend-api.com"
+      }
+    }
+  }
+}
+```
+
+### 3. Build
+
+```bash
+# iOS
+eas build --platform ios --profile production
+
+# Android
+eas build --platform android --profile production
+```
+
+### 4. Submit to Stores
+
+```bash
+# iOS App Store
+eas submit --platform ios
+
+# Google Play Store
+eas submit --platform android
+```
+
+### 5. Over-the-Air Updates
+
+```bash
+# Push updates without app store review
+eas update --branch production
+```
+
 ## Support
 
 For deployment issues:

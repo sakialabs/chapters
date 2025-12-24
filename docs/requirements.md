@@ -329,7 +329,7 @@ The platform serves poets, writers, visual artists, musicians, filmmakers, and p
 #### Acceptance Criteria
 
 1. THE Backend SHALL be deployed on Render with managed PostgreSQL and Redis instances
-2. THE Web_App SHALL be deployed on Vercel
+2. THE Web_App SHALL be deployed on Netlify
 3. THE Mobile_App SHALL use Expo EAS for build and deployment
 4. THE System SHALL use Cloudflare R2 or AWS S3 for media storage
 5. THE System SHALL implement crash reporting using Sentry or similar service

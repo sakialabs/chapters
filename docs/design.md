@@ -76,12 +76,12 @@ graph TB
 - Styling: Tailwind CSS
 - Components: shadcn/ui
 - Animations: Framer Motion
-- Deployment: Vercel
+- Deployment: Netlify
 
 **Infrastructure**
 - Backend Hosting: Render
 - Database: Render Managed PostgreSQL
-- Web Hosting: Vercel
+- Web Hosting: Netlify
 - Mobile Builds: Expo EAS
 - Media Storage: Cloudflare R2
 - Monitoring: Sentry

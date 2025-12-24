@@ -293,8 +293,9 @@ eas build --platform ios
 eas build --platform android
 ```
 
-### Web (Vercel)
+### Web (Netlify)
 ```bash
 cd frontend
-vercel deploy
+npm run build
+# Deploy via Netlify dashboard
 ```
