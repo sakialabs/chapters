@@ -1,0 +1,37 @@
+[tool.poetry]
+name = "chapters-backend"
+version = "0.1.0"
+description = "Chapters MVP Backend - A calm, expressive social platform"
+authors = ["Chapters Team"]
+readme = "README.md"
+packages = [{include = "app"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+fastapi = "^0.115.0"
+uvicorn = {extras = ["standard"], version = "^0.34.0"}
+sqlalchemy = "^2.0.36"
+alembic = "^1.14.0"
+psycopg2-binary = "^2.9.10"
+pgvector = "^0.3.6"
+redis = "^5.2.1"
+rq = "^2.1.0"
+python-jose = {extras = ["cryptography"], version = "^3.3.0"}
+passlib = {extras = ["bcrypt"], version = "^1.7.4"}
+python-multipart = "^0.0.20"
+pydantic = {extras = ["email"], version = "^2.10.5"}
+pydantic-settings = "^2.7.0"
+openai = "^1.59.5"
+boto3 = "^1.35.94"
+sentry-sdk = {extras = ["fastapi"], version = "^2.20.0"}
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.4"
+pytest-asyncio = "^0.25.2"
+hypothesis = "^6.125.0"
+httpx = "^0.28.1"
+faker = "^34.0.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

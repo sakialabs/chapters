@@ -1,0 +1,65 @@
+version: '3.8'
+
+services:
+  # PostgreSQL with pgvector extension
+  postgres:
+    image: ankane/pgvector:latest
+    container_name: chapters-postgres
+    environment:
+      POSTGRES_USER: chapters
+      POSTGRES_PASSWORD: chapters
+      POSTGRES_DB: chapters
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U chapters"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Redis for caching and job queue
+  redis:
+    image: redis:7-alpine
+    container_name: chapters-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Backend API
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: chapters-backend
+    environment:
+      DATABASE_URL: postgresql://chapters:chapters@postgres:5432/chapters
+      REDIS_URL: redis://redis:6379/0
+      SECRET_KEY: ${SECRET_KEY:-dev-secret-key-change-in-production}
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-sk-your-key-here}
+      S3_BUCKET: ${S3_BUCKET:-chapters-media}
+      S3_ACCESS_KEY: ${S3_ACCESS_KEY:-your-access-key}
+      S3_SECRET_KEY: ${S3_SECRET_KEY:-your-secret-key}
+      DEBUG: "true"
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    profiles:
+      - full  # Only start with: docker-compose --profile full up
+
+volumes:
+  postgres_data:
+  redis_data:

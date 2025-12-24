@@ -1,0 +1,243 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Light Mode - Paper White background */
+    --background: #FAF8F4;
+    --foreground: #1C1C1C;
+    
+    /* Cards should use Paper White, not pure white */
+    --card: #FAF8F4;
+    --card-foreground: #1C1C1C;
+    
+    --popover: #FAF8F4;
+    --popover-foreground: #1C1C1C;
+    
+    /* Primary = Ink Blue */
+    --primary: #2F3A4A;
+    --primary-foreground: #FAF8F4;
+    
+    /* Secondary = Soft Sage */
+    --secondary: #A8B8A0;
+    --secondary-foreground: #1C1C1C;
+    
+    /* Muted = Warm Gray */
+    --muted: #CFCAC2;
+    --muted-foreground: #4A4A4A;
+    
+    /* Accent = Muted Clay (use sparingly!) */
+    --accent: #C08A6A;
+    --accent-foreground: #FAF8F4;
+    
+    --border: #CFCAC2;
+    --input: #CFCAC2;
+    --ring: #2F3A4A;
+    
+    --radius: 0.75rem;
+  }
+  
+  .dark {
+    /* Dark Mode - Reading by Lamplight */
+    --background: #1C1A17;
+    --foreground: #E8E4DC;
+    
+    /* Cards - warm paper glow */
+    --card: #28251F;
+    --card-foreground: #E8E4DC;
+    
+    --popover: #28251F;
+    --popover-foreground: #E8E4DC;
+    
+    /* Primary button - warm muted blue */
+    --primary: #5D7285;
+    --primary-foreground: #FDFCFA;
+    
+    /* Secondary - soft sage */
+    --secondary: #9AAA92;
+    --secondary-foreground: #1C1A17;
+    
+    /* Muted - warm shadows */
+    --muted: #2F2C26;
+    --muted-foreground: #B8B3A8;
+    
+    /* Accent - warm clay */
+    --accent: #C4967A;
+    --accent-foreground: #FDFCFA;
+    
+    --border: #3D3A33;
+    --input: #3D3A33;
+    --ring: #5D7285;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    /* Smooth transitions for all elements */
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Custom scrollbar - calm and subtle */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-background;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-border rounded-full;
+    transition: background-color 0.3s ease;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-muted-foreground;
+  }
+  
+  /* Smooth transitions for interactive elements */
+  a, button {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  /* Fade-in animation for page loads */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Gentle pulse for special elements */
+  @keyframes gentlePulse {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.8;
+    }
+  }
+  
+  /* Page turn effect */
+  @keyframes pageTurn {
+    0% {
+      transform: perspective(1000px) rotateY(0deg);
+    }
+    100% {
+      transform: perspective(1000px) rotateY(-180deg);
+    }
+  }
+}
+
+@layer utilities {
+  /* Text balance for headings */
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  /* Calm focus ring */
+  .focus-calm {
+    @apply focus:outline-none focus:ring-2 focus:ring-inkBlue focus:ring-offset-2 focus:ring-offset-background;
+    transition: all 0.2s ease;
+  }
+  
+  /* Paper texture effect */
+  .paper-texture {
+    background-image: 
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(28, 28, 28, 0.01) 2px,
+        rgba(28, 28, 28, 0.01) 4px
+      );
+  }
+  
+  /* Smooth fade-in animation */
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+  
+  /* Staggered fade-in for lists */
+  .animate-fade-in-delay-1 {
+    animation: fadeIn 0.6s ease-out 0.1s forwards;
+    opacity: 0;
+  }
+  
+  .animate-fade-in-delay-2 {
+    animation: fadeIn 0.6s ease-out 0.2s forwards;
+    opacity: 0;
+  }
+  
+  .animate-fade-in-delay-3 {
+    animation: fadeIn 0.6s ease-out 0.3s forwards;
+    opacity: 0;
+  }
+  
+  .animate-fade-in-delay-4 {
+    animation: fadeIn 0.6s ease-out 0.4s forwards;
+    opacity: 0;
+  }
+  
+  /* Gentle pulse for special moments */
+  .animate-gentle-pulse {
+    animation: gentlePulse 2s ease-in-out infinite;
+  }
+  
+  /* Smooth hover lift */
+  .hover-lift {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
+  }
+  
+  .hover-lift:hover {
+    transform: translateY(-4px);
+  }
+  
+  /* Calm transition classes */
+  .transition-calm {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .transition-calm-fast {
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .transition-calm-slow {
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  /* Backdrop blur for overlays */
+  .backdrop-calm {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+}
+
+/* Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
